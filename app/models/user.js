@@ -1,8 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require('../connection');
 
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: {
+        type: String,
+        default: ''
+    },
+    salt: {
+        type: String,
+        default: ''
+    },
+    hash: {
         type: String,
         default: ''
     },
