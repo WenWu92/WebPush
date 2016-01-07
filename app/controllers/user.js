@@ -1,13 +1,13 @@
 'use strict';
 
-var session = require('express-session');
+const session = require('express-session');
 
 const User = require('../models/user');
 const pass = require('../utils/pass');
 const resPattern = require('../utils/reponsePattern');
 
 exports.list = function (req, res) {
-    User.find(function (err, users) {
+    User.find({}, {name: 1, age: 1, sex: 1}, function (err, users) {
         if (err) {
             console.error(err);
             return err;
@@ -53,6 +53,8 @@ exports.login = function (req, res) {
     authenticate(username, password, function (err, user) {
         if (user) {
             req.session.regenerate(function () {
+                user.salt = undefined;
+                user.hash = undefined;
                 req.session.user = user;
                 res.send(resPattern.success(user));
             });
