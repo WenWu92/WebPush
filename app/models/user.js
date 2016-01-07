@@ -1,3 +1,4 @@
+/*用户*/
 const mongoose = require('../connection');
 
 const Schema = mongoose.Schema;
@@ -21,7 +22,8 @@ const userSchema = new Schema({
     sex: {
         type: Boolean,
         default: true
-    }
+    },
+    sites: [{type: Schema.Types.ObjectId, ref: 'Site'}]
 });
 
 var userModel = mongoose.model('user', userSchema);

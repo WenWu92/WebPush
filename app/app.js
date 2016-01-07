@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+const cors = require('cors');
 
 var config = require('./config');
 
@@ -16,6 +17,9 @@ var ajax = require('./routes/ajax');
 var system = require('./routes/system');
 
 var app = express();
+
+//跨域支持
+app.use(cors());
 
 //express session middleware
 app.use(session({
