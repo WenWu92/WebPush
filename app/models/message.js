@@ -1,4 +1,4 @@
-/*推送消息体*/
+/*推送消息结构体*/
 const mongoose = require('../connection');
 var user = require('Site');
 

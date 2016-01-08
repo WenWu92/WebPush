@@ -24,8 +24,8 @@ const userSchema = new Schema({
         default: true
     },
     sites: [{type: Schema.Types.ObjectId, ref: 'Site'}]
-});
+}, {collection: 'User'});
 
-var userModel = mongoose.model('user', userSchema);
+var userModel = mongoose.model('User', userSchema);
 
 module.exports = userModel;
